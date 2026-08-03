@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'jacoco'
-	id 'org.springframework.boot' version '3.5.3'
+	id 'org.springframework.boot' version '4.1.0'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -31,8 +31,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.flywaydb:flyway-core'
 	implementation 'org.flywaydb:flyway-database-postgresql'
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3'
+	implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
 
 	// Observability (prompt 26) — versions for the three below are Spring Boot's own
 	// managed BOM versions (io.spring.dependency-management plugin), same as every
@@ -44,14 +44,14 @@ dependencies {
 	implementation 'io.micrometer:micrometer-tracing-bridge-otel'
 	implementation 'io.opentelemetry:opentelemetry-exporter-logging' // dev-friendly default — logs spans, no external collector required
 	runtimeOnly 'io.opentelemetry:opentelemetry-exporter-otlp' // real backend (Jaeger/Tempo/Honeycomb/...), used only if management.otlp.tracing.endpoint is configured
-	implementation 'net.logstash.logback:logstash-logback-encoder:8.1'
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
-	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+	implementation 'net.logstash.logback:logstash-logback-encoder:9.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
 	runtimeOnly 'org.postgresql:postgresql'
 	// Spring Security's Argon2PasswordEncoder needs a real Argon2 implementation on the
 	// classpath at runtime — it's an optional dependency of spring-security-crypto, not
 	// pulled in transitively. Without this, encoding/matching throws NoClassDefFoundError.
-	runtimeOnly 'org.bouncycastle:bcprov-jdk18on:1.80'
+	runtimeOnly 'org.bouncycastle:bcprov-jdk18on:1.85'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
